@@ -1,9 +1,7 @@
 import React from "react";
 import logoPNG from './img/logoPNG.png'
+import Cartwidget from "./Cartwidget";
 
-let logoTamano={
-    height:10
-}
 const Navbar= ()=>{
     return(
         <nav class="navbar navbar-expand-lg navbar-light bg-secondary bg-gradient">
@@ -35,6 +33,7 @@ const Navbar= ()=>{
                     <input class="form-control me-2" type="search" placeholder="Buscar en la pagina" aria-label="Search"></input>
                     <button class="btn btn-outline-light" type="submit">Buscar</button>
                 </form>
+                <Cartwidget />
                 </div>
             </div>
         </nav>
