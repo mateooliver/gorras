@@ -1,18 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
+import App from "../App";
 
-const ItemListContainer= ()=> {
+const ItemListContainer= (props)=> {
+    const [contandor, setContador]= useState(0)
     return(
-        <div className="conteiner-fluid text-center mx-auto col-8"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut tortor bibendum, egestas erat vel, malesuada massa. Nullam eros ex, consequat id orci tristique, feugiat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut tortor bibendum, egestas erat vel, malesuada massa. Nullam eros ex, consequat id orci tristique, feugiat.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut tortor bibendum, egestas erat vel, malesuada massa. Nullam eros ex, consequat id orci tristique, feugiat.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut tortor bibendum, egestas erat vel, malesuada massa. Nullam eros ex, consequat id orci tristique, feugiat.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut tortor bibendum, egestas erat vel, malesuada massa. Nullam eros ex, consequat id orci tristique, feugiat.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut tortor bibendum, egestas erat vel, malesuada massa. Nullam eros ex, consequat id orci tristique, feugiat.
-
-
+        <div>
+            <div class=" col-1 text-center mt-5">
+                   <p>Stock: {props.stock}  </p>
+            </div>
+            <div className="col-1"> 
+                <div class="input-group mb-3">
+                    <button class="btn btn-outline-secondary" type="button">+</button>
+                    <input type="text" class="form-control" placeholder="" aria-describedby="button-addon2" aria-label="Example text with two button addons"></input>
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">-</button>
+                </div>
+            </div>
         </div>
     )
 }
