@@ -1,12 +1,13 @@
 import React from "react";
-import logoPNG from './img/logoPNG.png'
+
 import Cartwidget from "./Cartwidget";
 
-const Navbar= ()=>{
+const Navbar= (props)=>{
     return(
         <nav class="navbar navbar-expand-lg navbar-light bg-secondary bg-gradient">
             <div class="container-fluid">
-                <img style={{height:100, backgroundColor:"white" }} className="rounded-circle" src={logoPNG} alt="logo" />
+                
+                <img style={{height:100, backgroundColor:"white" }} className="rounded-circle" src={props.logo} alt="logo" />
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
