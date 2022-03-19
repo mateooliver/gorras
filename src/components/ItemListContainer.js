@@ -18,7 +18,7 @@ const ItemListContainer= (props)=> {
     return(
         <div>
             <div class=" col-1 text-center mt-5">
-                   <p>Stock: {props.stock}  </p>
+                   <p>Stock: {props.stock - contandor}  </p>
             </div>
             <div className="col-1"> 
                 <div class="input-group mb-3">
