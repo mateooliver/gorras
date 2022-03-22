@@ -8,7 +8,7 @@ function App() {
   return (
     <header>
         <Navbar logo={logoPNG}/>
-        <ItemListContainer stock={5} />
+        <ItemListContainer stock={0} />
     </header>
   );
 }
