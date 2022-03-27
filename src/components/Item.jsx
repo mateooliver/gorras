@@ -21,10 +21,8 @@ const Item = ({producto})=>{
             <div className="card text-center my-4" style={{width: "18rem"}}>
                 <img src={producto.img} className="card-img-top" alt="..."/>
                 <div className="card-body">
-                    <h5 className="card-title">{producto.nombre}</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <h6 className="text-secondary">${producto.precio}</h6>
-                    <a className="btn btn-primary">Ver mas</a>
+                    <h5 className="card-title">{producto.nombre}</h5>                    <h6 className="text-secondary">${producto.precio}</h6>
+                    <a className="btn btn-primary" href="">Ver mas</a>
                     <div className="mx-auto bg-secondary text-white rounded-3 text-center my-3 "> {Stock ()}</div>
                 </div>
                

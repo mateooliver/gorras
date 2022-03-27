@@ -3,12 +3,14 @@ import Navbar from './components/Navbar.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ItemListContainer from './components/ItemListContainer';
 import logoPNG from '/Users/mateooliver/Desktop/React/gorras/src/components/img/logoPNG.png'
+import ItemDetailContainer from './components/ItemDetailContainer';
 
 function App() {
   return (
     <header>
         <Navbar logo={logoPNG}/>
         <ItemListContainer/>
+        <ItemDetailContainer/> 
     </header>
   );
 }
