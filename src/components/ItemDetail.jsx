@@ -6,7 +6,7 @@ const ItemDetail = (itemDetail) => {
     const {stock, nombre, precio, img, descripcion, talles} = itemDetail.itemDetail
   return (
     <div className='d-flex columns justify-content-start' style={{width:"100vw"}}>
-        <div style={{width:"50vw"}} >{img}</div>
+        <div style={{width:"50vw"}} ><img src={img} alt="" /></div>
         <div className='d-flex row gap-2' style={{width:"50vw"}} >
             <h2>Gorra {nombre}</h2>
             <h3> ${precio}</h3>
