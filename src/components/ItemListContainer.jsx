@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { useParams } from "react-router-dom";
 import App from "../App";
 import ItemList from "./ItemList"
 import { Promesa } from './mocks/FakeApi';
@@ -7,13 +8,22 @@ const ItemListContainer= (props)=> {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(false);
 
+    const {categoryId}=useParams()
+    
+  
+
     useEffect(()=>{
         setLoading(true);
      Promesa
-     .then((res)=>setItems(res))
+     .then((res)=>{
+         if(categoryId){    
+            setItems(res.filter((items)=>items.category===categoryId));
+        }else{
+         setItems(res)}
+        })
     .catch((error)=>console.log('error', error))
     .finally(()=>setLoading(false));
-         },[])
+         },[categoryId])
     
     
     return(

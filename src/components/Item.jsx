@@ -1,6 +1,7 @@
 import React from "react";
 import App from "../App";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { Link } from "react-router-dom";
 
 
 let promesa;
@@ -22,7 +23,7 @@ const Item = ({producto})=>{
                 <img src={producto.img} className="card-img-top" alt="..."/>
                 <div className="card-body">
                     <h5 className="card-title">{producto.nombre}</h5>                    <h6 className="text-secondary">${producto.precio}</h6>
-                    <a className="btn btn-primary" href="">Ver mas</a>
+                    <Link to={`/detail/${producto.id}`} className="btn btn-primary" href="">Ver mas</Link>
                     <div className="mx-auto bg-secondary text-white rounded-3 text-center my-3 "> {Stock ()}</div>
                 </div>
                
