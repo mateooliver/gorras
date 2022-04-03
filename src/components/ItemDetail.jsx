@@ -3,44 +3,62 @@ import { Button } from 'react-bootstrap'
 import { createRoutesFromChildren, Link, useNavigate, } from 'react-router-dom'
 import { InputGroup } from 'react-bootstrap'
 import { useState } from 'react'
+import ItemCount from './itemCount'
 
 
-const ItemDetail = ({stock, nombre, precio, img, descripcion, talles}) => {
-  const [contador, setContador] = useState(0)
+const ItemDetail = ({stock, nombre, precio, img, descripcion, talles,id}) => {
+
+  const [cantidad, setCantidad] = useState(1)
+  
+// funcion para volver atras un paso en la navegacion
   const navigate =useNavigate()
   const handleNavigate=()=>{
     navigate(-1)
   }
+// agrega al carrito y con una condicion de si hay stock lo permite y sino muestra en consola que no hay stock
+  const agregarAlCarrito = () => {  
+    if( stock > 0){
+     const itemToAdd={
+       id,
+       nombre,
+       precio,
+       img,
+       cantidad
+     }
+     console.log(itemToAdd)
+  }else{
+    console.log('no hay stock')
+  }}
 
+// funcio  que resta stock a medida que sumamos en el contador
    const Stock = () =>{
      if(stock >= 1){
-         return (`En Stock   (${(stock - contador)})`)
+         return (`En Stock   (${(stock - cantidad)})`)
      }else{
           return ("Agotado")
      }
    }
-   const Cantidad=(tipo)=>{
-     if(( tipo=== 'sumar') && (stock > contador)){
-       setContador(contador +1)
-     } else if ((tipo === 'restar')&& (contador > 0)){
-        setContador(contador-1)
-   }}
+  
+  //  funcion que pone en el div de entre medio del counter informaciosobre el stock
+   const Resultado = () => {
+    if (stock > 0 ){
+        return cantidad
+    } else{
+          return "0"
+    }}
+
 
   return (
-    <div className='d-flex columns justify-content-start' style={{width:"100vw;"}}>
+    <div className='d-flex columns justify-content-start' style={{width:"100vw"}}>
         <div style={{width:"50vw"}} ><img src={img} alt="" /></div>
         <div className='d-flex row gap-2' style={{width:"50vw"}} >
             <h2>Gorra {nombre}</h2>
             <h3> ${precio}</h3>
             <p className='container-fluid ' style={{width:"60%",marginLeft:"0%"}}>{descripcion}</p>
-            <p> Cantidad en Stock: {Stock ()}</p>
-            <InputGroup className="mb-3">
-              <Button variant="outline-secondary" onClick={()=>Cantidad('sumar') } >+</Button>
-              <div className='col-1 text-center my-auto'> {contador}</div>
-              <Button variant="outline-secondary"  onClick={()=>Cantidad('restar') }>-</Button>
-            </InputGroup>
+           
+            <ItemCount  max={stock} restaStock={Stock()} resultado={Resultado ()} onAdd={agregarAlCarrito} cantidad={cantidad} setCantidad={setCantidad}/>
             <p>Talles disponibles: {talles}</p>
-            <button className='btn btn-primary col-2 p-0 m-2'>Comprar</button>
+            <button className='btn btn-primary col-2 p-0 m-2' onClick={agregarAlCarrito}>Agregar al carrito </button>
             <hr/>
         <Button className='btn btn-outline-secondary bg-white text-dark col-2 m-2 p-0' onClick={handleNavigate}> Volver</Button>
         </div>

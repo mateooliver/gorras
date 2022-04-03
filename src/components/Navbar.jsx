@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 import ItemDetailContainer from "./ItemDetailContainer";
 
 const Navbar= (props)=>{
-
-
+  
     return(
         <nav className="navbar navbar-expand-lg navbar-light bg-secondary bg-gradient">
             <div className="container-fluid">
