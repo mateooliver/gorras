@@ -3,7 +3,7 @@ import { useState } from "react";
 import { InputGroup, Button,  } from "react-bootstrap";
 
 
-const ItemCount = ({max, cantidad, setCantidad, resultado,restaStock}) => {
+const ItemCount = ({max, cantidad, setCantidad, resultado,restaStock, onAdd}) => {
 
     
     const handleSumar = () => {
@@ -24,7 +24,7 @@ const ItemCount = ({max, cantidad, setCantidad, resultado,restaStock}) => {
               <span className='col-1 text-center my-auto'> {resultado}</span>
               <Button variant="outline-secondary"  onClick={handleRestar }>-</Button>
             </InputGroup>
-            
+            <Button className='btn btn-primary col-2 p-0 m-2' onClick={onAdd}>Agregar al carrito </Button>
     </div>
   )
 }

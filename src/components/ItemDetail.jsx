@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button } from 'react-bootstrap'
 import { createRoutesFromChildren, Link, useNavigate, } from 'react-router-dom'
 import { InputGroup } from 'react-bootstrap'
 import { useState } from 'react'
 import ItemCount from './itemCount'
-
+import {CartContext} from './CartContext'
 
 const ItemDetail = ({stock, nombre, precio, img, descripcion, talles,id}) => {
+
+  const { addItem, isInCart }= useContext(CartContext);
 
   const [cantidad, setCantidad] = useState(1)
   
@@ -25,7 +27,7 @@ const ItemDetail = ({stock, nombre, precio, img, descripcion, talles,id}) => {
        img,
        cantidad
      }
-     console.log(itemToAdd)
+     addItem (itemToAdd)
   }else{
     console.log('no hay stock')
   }}
@@ -55,12 +57,17 @@ const ItemDetail = ({stock, nombre, precio, img, descripcion, talles,id}) => {
             <h2>Gorra {nombre}</h2>
             <h3> ${precio}</h3>
             <p className='container-fluid ' style={{width:"60%",marginLeft:"0%"}}>{descripcion}</p>
-           
-            <ItemCount  max={stock} restaStock={Stock()} resultado={Resultado ()} onAdd={agregarAlCarrito} cantidad={cantidad} setCantidad={setCantidad}/>
             <p>Talles disponibles: {talles}</p>
-            <button className='btn btn-primary col-2 p-0 m-2' onClick={agregarAlCarrito}>Agregar al carrito </button>
+             
+            
+            {
+              !isInCart(id) ?   <ItemCount  max={stock} restaStock={Stock()} resultado={Resultado ()} onAdd={agregarAlCarrito} cantidad={cantidad} setCantidad={setCantidad}/>
+                                : <Link to={`/cart`} className='btn btn-primary col-2 p-0 m-2'>Ir al carrito</Link>
+            }
+
+            
             <hr/>
-        <Button className='btn btn-outline-secondary bg-white text-dark col-2 m-2 p-0' onClick={handleNavigate}> Volver</Button>
+             <Button className='btn btn-outline-secondary bg-white text-dark col-2 m-2 p-0' onClick={handleNavigate}> Volver</Button>
         </div>
  
     </div>
