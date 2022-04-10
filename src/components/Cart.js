@@ -11,8 +11,10 @@ const Cart =()=>{
   
     return(
         <div>
-        {
+        {  
+        // uso de ternario para verificar si el carrito esta vacio
             cart.length === 0 
+              // si es true, muestra esto
             ?<div className=' text-center ' style={{height:"100vh", marginTop:"20vh"}}>
             <h1 className=''>Ups!</h1>
              <p className=''>Tu carrito esta vacio</p>
@@ -21,7 +23,10 @@ const Cart =()=>{
                 <Link to={"/"} className="btn btn-dark">Volver</Link>
              </div>
              </div>
-            : <>
+
+            : 
+            // si es false, muestra esto
+            <>
             <div>
                     <div className='col-6 mx-auto bg-secondary my-2 text-center text-white fw-bolder rounded-3'>Tus items seleccionados, solo resta confirmar compra</div>
 
