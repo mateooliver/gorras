@@ -48,6 +48,13 @@ const ItemDetail = ({stock, nombre, precio, img, descripcion, talles,id}) => {
     } else{
           return "0"
     }}
+  
+  // cartContext
+  const InCart=()=>{
+   return !isInCart(id) ?   <ItemCount  max={stock} restaStock={Stock()} resultado={Resultado ()} onAdd={agregarAlCarrito} cantidad={cantidad} setCantidad={setCantidad}/>
+    : <Link to={`/cart`} className='btn btn-primary col-2 p-0 m-2'>Ir al carrito</Link>
+
+  }
 
 
   return (
@@ -58,13 +65,8 @@ const ItemDetail = ({stock, nombre, precio, img, descripcion, talles,id}) => {
             <h3> ${precio}</h3>
             <p className='container-fluid ' style={{width:"60%",marginLeft:"0%"}}>{descripcion}</p>
             <p>Talles disponibles: {talles}</p>
-             
-            
-            {
-              !isInCart(id) ?   <ItemCount  max={stock} restaStock={Stock()} resultado={Resultado ()} onAdd={agregarAlCarrito} cantidad={cantidad} setCantidad={setCantidad}/>
-                                : <Link to={`/cart`} className='btn btn-primary col-2 p-0 m-2'>Ir al carrito</Link>
-            }
 
+            { InCart ()}
             
             <hr/>
              <Button className='btn btn-outline-secondary bg-white text-dark col-2 m-2 p-0' onClick={handleNavigate}> Volver</Button>
