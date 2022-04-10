@@ -65,8 +65,13 @@ const ItemDetail = ({stock, nombre, precio, img, descripcion, talles,id}) => {
             <h3> ${precio}</h3>
             <p className='container-fluid ' style={{width:"60%",marginLeft:"0%"}}>{descripcion}</p>
             <p>Talles disponibles: {talles}</p>
-
-            { InCart ()}
+            
+          {/* muestra el contador o no segun el stock, con un ternario */}
+           { stock > 0 ? <>
+             {InCart()}
+             </>
+             :<><p className='text-danger'>¡Disculpá, no tenemos más stock!</p></>
+            }
             
             <hr/>
              <Button className='btn btn-outline-secondary bg-white text-dark col-2 m-2 p-0' onClick={handleNavigate}> Volver</Button>
