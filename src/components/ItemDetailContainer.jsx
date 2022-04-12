@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import { Promesa } from './mocks/FakeApi'
 import ItemDetail from './ItemDetail'
 import { Container } from 'react-bootstrap'
+import { dataBase } from '../firebase/config'
+import {doc, getDoc} from 'firebase/firestore'
 
 
 export const ItemDetailContainer = () => {
@@ -14,12 +16,15 @@ export const ItemDetailContainer = () => {
 
     useEffect(() => {
       setCargando(true)
-        Promesa
-            .then((res)=>{ 
-              setItemDetail(res.find((item) => item.id === itemId))})
-            .catch((error)=>{console.log('error')})
+
+        const itemRef=doc(dataBase, 'gorras', itemId)
+        getDoc(itemRef)
+            .then((res)=> {
+                setItemDetail ({id: res.id, ...res.data()})
+            })
             .finally(()=>{
-              setCargando(false)})
+              setCargando(false)
+            })
     },[itemId]);
 
   return (

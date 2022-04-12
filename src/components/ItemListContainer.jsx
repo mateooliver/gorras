@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import App from "../App";
 import ItemList from "./ItemList"
 import { Promesa } from './mocks/FakeApi';
+import { collection, query, getDocs, where } from "firebase/firestore";
+import { dataBase } from "../firebase/config";
 
 const ItemListContainer= (props)=> {
     const [items, setItems] = useState([]);
@@ -14,15 +16,19 @@ const ItemListContainer= (props)=> {
 
     useEffect(()=>{
         setLoading(true);
-     Promesa
-     .then((res)=>{
-         if(categoryId){    
-            setItems(res.filter((items)=>items.category===categoryId));
-        }else{
-         setItems(res)}
-        })
-    .catch((error)=>console.log('error', error))
-    .finally(()=>setLoading(false));
+        // tenemos dos pasos, 1 armar la referencia a la coleccion
+        const gorrasRef=collection(dataBase, 'gorras');
+        const  q= categoryId ? query(gorrasRef, where('category', '==', categoryId)): gorrasRef
+
+        //2= obtener los datos: llamar (async)a esa referecnia
+        getDocs(q)
+            .then(respuesta=>{
+                const gorras= respuesta.docs.map((gorra)=>({id: gorra.id, ...gorra.data()}))
+                setItems(gorras)
+            })
+            .finally(()=>{
+                setLoading(false)
+            })
          },[categoryId])
     
     
