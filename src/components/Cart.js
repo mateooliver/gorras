@@ -56,8 +56,9 @@ const Cart =()=>{
                ))
            }
               <div className='d-flex row justify-content-end col-8 mx-auto my-3'>
-                   <div className='btn bg-success  text-center text-white mx-4 col-2 ' ><BsFillCartCheckFill/></div>
-                   <p className='fw-bolder fs-6 text-end col-10 my-auto'>Total de compra: ${cartTotal()} </p>
+                  {/* cterminar compra */}
+                   <Link to={"/Checkout"} className='btn bg-success  text-center text-white mx-4 col-2 ' ><BsFillCartCheckFill/></Link>
+                   <p className='fw-bolder fs-6 text-end col-10 my-auto' >Total de compra: ${cartTotal()} </p>
                 </div>
                    <hr className='col-8 mx-auto'/>
                    <div className='text-end col-10'>
